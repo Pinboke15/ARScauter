@@ -13,7 +13,7 @@ public class WebManager : MonoBehaviour {
     string filePath = null;
 
     private const string OCP_APIM_SUBSCRIPTION_KEY = "Ocp-Apim-Subscription-Key";
-    private const string ENDPOINT = "XXXX/face/v1.0/detect";
+    private const string ENDPOINT = "<endpoint>/face/v1.0/detect";
 
     byte[] imageData;
 
@@ -24,8 +24,12 @@ public class WebManager : MonoBehaviour {
     async Task AnalyseLastImageCaptured() {
         WWWForm webForm = new WWWForm();
 
-        using (UnityWebRequest webRequest = UnityWebRequest.Post(ENDPOINT, webForm)) {
+        string requestParameters =
+            "returnFaceId=true&returnFaceLandmarks=false" +
+            "&returnFaceAttributes=age,gender,headPose,smile,facialHair,glasses," +
+            "emotion,hair,makeup,occlusion,accessories,blur,exposure,noise";
 
+        using (UnityWebRequest webRequest = UnityWebRequest.Post(ENDPOINT + "?" + requestParameters, webForm)) {
             imageData = GetImageAsByteArray(filePath);
 
             webRequest.SetRequestHeader("Content-Type", "application/octet-stream");
