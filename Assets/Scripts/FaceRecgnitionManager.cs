@@ -6,6 +6,9 @@ using UnityEngine.XR.ARSubsystems;
 using TMPro;
 
 public class FaceRecgnitionManager : MonoBehaviour {
+
+    readonly Vector3 DELTA = new Vector3(0.15f, 0f, 0f);
+
     [SerializeField]
     private ARFaceManager arFaceMgr;
 
@@ -22,9 +25,7 @@ public class FaceRecgnitionManager : MonoBehaviour {
             if (placedObj.trackingState == TrackingState.Tracking) {
                 placedObj.gameObject.SetActive(true);
                 // äÁÇÃè≠Çµâ°Ç…Ç∏ÇÁÇµÇƒï\é¶
-                Vector3 pos = placedObj.gameObject.transform.position;
-                Vector3 delta = new Vector3(0.2f, 0, 0);
-                placedObj.gameObject.transform.position = pos + delta;
+                placedObj.gameObject.transform.position = placedObj.gameObject.transform.position + DELTA;
             }
         }
 
@@ -32,9 +33,7 @@ public class FaceRecgnitionManager : MonoBehaviour {
             if (placedObj.trackingState == TrackingState.Tracking) {
                 placedObj.gameObject.SetActive(true);
                 // äÁÇÃè≠Çµâ°Ç…Ç∏ÇÁÇµÇƒï\é¶
-                Vector3 pos = placedObj.gameObject.transform.position;
-                Vector3 delta = new Vector3(0.2f, 0, 0);
-                placedObj.gameObject.transform.position = pos + delta;
+                placedObj.gameObject.transform.position = placedObj.gameObject.transform.position + DELTA;
             } else {
                 placedObj.gameObject.SetActive(false);
             }
