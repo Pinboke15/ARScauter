@@ -5,6 +5,7 @@ using UnityEngine.Networking;
 using System;
 using System.Threading.Tasks;
 using System.IO;
+using Newtonsoft.Json;
 
 public class WebManager : MonoBehaviour {
     [SerializeField]
@@ -46,7 +47,10 @@ public class WebManager : MonoBehaviour {
 
             try {
                 string resData = webRequest.downloadHandler.text;
-                Debug.Log(resData);
+                resData = resData.Remove(0, 1);
+                resData = resData.Substring(0, resData.Length - 1);
+                var faceData = JsonConvert.DeserializeObject<FaceData>(resData);
+                Debug.Log(faceData.faceId);
             } catch (Exception e) {
                 Debug.Log(e.Message);
             }
