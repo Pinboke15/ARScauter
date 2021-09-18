@@ -214,7 +214,6 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
-  - {fileID: 1289789231}
   - {fileID: 1834205537}
   - {fileID: 1918642995}
   - {fileID: 1848017029}
@@ -257,9 +256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   authrizationKey: 
-  cpuImageManager: {fileID: 1720701237}
-  recogText: {fileID: 1848017030}
-  inputImage: {fileID: 1135098781}
+  endpoint: 
 --- !u!4 &497011706
 Transform:
   m_ObjectHideFlags: 0
@@ -358,8 +355,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -590,11 +587,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 296655749}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -89, y: 245}
+  m_AnchoredPosition: {x: -103, y: 141.01001}
   m_SizeDelta: {x: 160, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1135098781
@@ -631,78 +628,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1135098779}
-  m_CullTransparentMesh: 1
---- !u!1 &1289789230
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1289789231}
-  - component: {fileID: 1289789233}
-  - component: {fileID: 1289789232}
-  m_Layer: 5
-  m_Name: CpuImage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1289789231
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1289789230}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 296655749}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -89, y: 109}
-  m_SizeDelta: {x: 160, y: 120}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1289789232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1289789230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Texture: {fileID: 0}
-  m_UVRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
---- !u!222 &1289789233
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1289789230}
   m_CullTransparentMesh: 1
 --- !u!1 &1518657673
 GameObject:
@@ -800,9 +725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_CameraManager: {fileID: 1748595322}
-  m_RawCameraImage: {fileID: 1289789232}
   m_ImageInfo: {fileID: 1834205538}
-  imageBinary: 
 --- !u!4 &1720701238
 Transform:
   m_ObjectHideFlags: 0
@@ -871,7 +794,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728815135}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: caeceacb624484daf8e379c2252fd246, type: 3}
   m_Name: 
@@ -891,6 +814,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   arFaceMgr: {fileID: 1728815138}
+  cpuImgMgr: {fileID: 1720701237}
+  webMgr: {fileID: 497011705}
+  capturedRawImg: {fileID: 1135098781}
+  recogResTxt: {fileID: 1848017030}
 --- !u!1 &1748595319
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,11 +968,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 296655749}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 27.828583, y: -59.61133}
+  m_AnchoredPosition: {x: 27.828613, y: -59.61133}
   m_SizeDelta: {x: -55.6572, y: 119.2226}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1834205538
@@ -1175,12 +1102,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 296655749}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 27.829, y: -144.88}
-  m_SizeDelta: {x: -55.657, y: 289.75}
+  m_AnchoredPosition: {x: 27.828, y: -95.845}
+  m_SizeDelta: {x: -55.657, y: 231.79}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1848017030
 MonoBehaviour:
@@ -1311,12 +1238,12 @@ RectTransform:
   m_Children:
   - {fileID: 646167319}
   m_Father: {fileID: 296655749}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 12.2446, y: 109}
-  m_SizeDelta: {x: 230.985, y: 119.99}
+  m_AnchoredPosition: {x: 0.0000085831, y: 124}
+  m_SizeDelta: {x: 364.7333, y: 154.02}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1918642996
 MonoBehaviour:
@@ -1362,9 +1289,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 497011705}
-        m_TargetAssemblyTypeName: WebManager, Assembly-CSharp
-        m_MethodName: OnClick
+      - m_Target: {fileID: 1728815139}
+        m_TargetAssemblyTypeName: FaceRecgnitionManager, Assembly-CSharp
+        m_MethodName: OnRecogBtn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -1,10 +1,6 @@
 using System;
-using System.IO;
 using Unity.Collections.LowLevel.Unsafe;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.XR.ARFoundation;
 using UnityEngine.XR.ARSubsystems;
 using TMPro;
@@ -20,43 +16,19 @@ public class CpuImageManager : MonoBehaviour {
     }
 
     [SerializeField]
-    RawImage m_RawCameraImage;
-    public RawImage rawCameraImage {
-        get => m_RawCameraImage;
-        set => m_RawCameraImage = value;
-    }
-
-    [SerializeField]
     TextMeshProUGUI m_ImageInfo;
     public TextMeshProUGUI imageInfo {
         get => m_ImageInfo;
         set => m_ImageInfo = value;
     }
 
-    public byte[] imageBinary;
+    private Texture2D m_CameraTexture;
 
-    void OnEnable() {
-        if (m_CameraManager != null) {
-            m_CameraManager.frameReceived += OnCameraFrameReceived;
-        }
-    }
-
-    void OnDisable() {
-        if (m_CameraManager != null) {
-            m_CameraManager.frameReceived -= OnCameraFrameReceived;
-        }
-    }
-
-    void OnCameraFrameReceived(ARCameraFrameEventArgs eventArgs) {
-        UpdateCameraImage();
-    }
-
-    Texture2D m_CameraTexture;
-
-    unsafe void UpdateCameraImage() {
+    unsafe public byte[] CaptureLatestImage() {
         // カメラ画像の取得チェック
         if (!cameraManager.TryAcquireLatestCpuImage(out XRCpuImage nativeImage)) {
-            return;
+            m_ImageInfo.text = "Failed Acquired Cpu Image.";
+            return null;
         }
 
         // 画像情報の表示
@@ -71,7 +43,7 @@ public class CpuImageManager : MonoBehaviour {
 
         // 取得画像情報をY軸反転し、テクスチャフォーマットに変換するパラメータオブジェクトを生成
         var convParams = new XRCpuImage.ConversionParams(nativeImage, format, XRCpuImage.Transformation.MirrorY | XRCpuImage.Transformation.MirrorX);
-        
+
         // テクスチャフォーマットに変換
         var rawTextureData = m_CameraTexture.GetRawTextureData<byte>();
         try {
@@ -83,10 +55,7 @@ public class CpuImageManager : MonoBehaviour {
 
         // 変更を反映
         m_CameraTexture.Apply();
-        // キャプチャした画像を表示
-        m_RawCameraImage.texture = m_CameraTexture;
         // 画像のバイナリデータを保持(外部から取得可能にする)
-        imageBinary = m_CameraTexture.EncodeToJPG();
+        return m_CameraTexture.EncodeToJPG();
     }
-
 }
